@@ -24,19 +24,65 @@ The application provides authentication, role-based access control, resource man
 
 ---
 
-## Project Architecture
+## Features
 
-The application follows a layered architecture:
+### Authentication & Security
+
+- JWT-based authentication
+- BCrypt password hashing
+- Stateless authentication
+- Role-based access control
+- ADMIN and USER roles
+- Protected API endpoints
+
+### Resource Management
+
+ADMIN users can:
+
+- Create resources
+- View resources
+- Update resources
+- Delete resources
+
+USER users can:
+
+- View resources
+- View individual resources
+
+### Reservation Management
+
+USER users can:
+
+- Create reservations
+- View their own reservations
+- View individual reservations belonging to them
+
+ADMIN users can:
+
+- View all reservations
+- View individual reservations
+- Create reservations
+- Update reservations
+- Update reservation status
+- Delete reservations
+
+Reservation statuses:
+
+- PENDING
+- CONFIRMED
+- CANCELLED
+
+### Filtering, Pagination & Sorting
+
+Reservations support:
+
+- Status filtering
+- Minimum price filtering
+- Maximum price filtering
+- Pagination using `page` and `size`
+- Sorting using Spring Data sorting parameters
+
+Example:
 
 ```text
-Controller
-    ↓
-Service
-    ↓
-Repository
-    ↓
-PostgreSQL Database
-
-# Author
-
-Developed as a backend development assignment using Spring Boot, Spring Security, JWT, PostgreSQL, and JPA/Hibernate.
+GET /reservations?page=0&size=10&sort=id,desc
